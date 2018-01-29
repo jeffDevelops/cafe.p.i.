@@ -1,0 +1,46 @@
+body{position:absolute;z-index:-100;width:100%;height:100%;font-family:"Didact Gothic",sans-serif}
+#map{position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;height:100vh;width:100vw;z-index:-1;opacity:1}
+.marker{width:80px;position:relative;margin-top:-50px;z-index:2}
+.landing_container{position:absolute;width:360px;top:25px;left:1px;right:1px;margin:0 auto 0;z-index:2;background-color:rgba(255,255,255,.85);border-radius:7px;padding:50px 0}
+.logo{display:block;width:310px;margin:0 auto}
+.questions{color:#685c79;font-family:"Didact Gothic",sans-serif;max-width:500px;min-width:295px;margin:50px auto 0}
+.questions p{margin-top:5px;text-align:center}
+.questions .row1{font-size:1.2em}
+.questions .row2{margin-top:0;font-size:2.1em}
+.questions .row3{font-size:1.27em}
+.questions .row4{font-size:.8em}
+.questions .yes{margin-top:10px;font-size:3.45em}
+.questions .row6{margin-top:10px;line-height:26px;font-size:.9em;width:85%;text-align:left;margin-left:10%}
+.gradient_border.activated{color:#da727e}
+.gradient_border{display:block;position:relative;width:310px;height:60px;margin:50px auto 0;padding:0 0 0 1px;background-image:linear-gradient(to right,#ffbc67,#da727e);border-radius:11px;border:0;outline:0;font-family:"Didact Gothic",sans-serif;font-size:1.4em;color:#fff;transition:background-image .3s}
+.gradient_border.activated:hover{box-shadow:0 8px 20px -9px #455c7b}
+.gradient_border.activated:hover .button_div{background-image:linear-gradient(to right,#ffbc67,#da727e);color:#fff;box-sizing:border-box;border:0;transition:box-shadow .6s,background-image .5}
+.gradient_border.activated:active{padding:27px 25px;background-image:linear-gradient(to right,#ffbc67,#da727e);box-shadow:0 0;color:#fff;box-sizing:border-box;border:0;transition:box-shadow .2s}
+.gradient_border.small{width:200px}
+.gradient_border.small .button_div{padding:10px;width:194px;font-size:.8em}
+.gradient_border.small .button_div i{margin:8px 5px 0 0;font-size:1em}
+.button_div{position:absolute;box-sizing:border-box;top:2px;left:2px;right:2px;bottom:2px;width:304px;height:54px;display:block;margin:auto;padding:16px;border:0;background-color:#fff;border-radius:9px;outline:0;line-height:20px}
+.sidebar{transform:translate(-999px);width:300px;height:100vh;background-color:rgba(255,255,255,.85);padding:5px;transition:transform .5s}
+.sidebar h2{font-size:1.6em;color:#685c79;width:85%;margin:50px auto 25px}
+.sidebar .input_container{position:relative;margin:25px auto 0;width:85%;z-index:1}
+.sidebar .input_container input[type=text]{width:100%;background-color:transparent;outline:0;border:0;padding:5px 0;font-size:1.2em;color:#685c79}
+.sidebar .input_container i{position:absolute;top:5px;right:0;color:#da727e;cursor:pointer}
+.sidebar .input_container .gradient_input{height:1px;width:100%;background-image:linear-gradient(#b9b9b9,#d2d2d2);margin-bottom:10px;transition:all .8s}
+.sidebar .input_container .checkmark_border{display:inline-block;height:24px;width:24px;padding:1px;background-image:linear-gradient(to right,#b9b9b9,#b9b9b9);border-radius:2px}
+.sidebar .input_container .checked{position:relative;height:22px;width:22px;background:#fff;margin:1px auto;border-radius:1px;cursor:pointer}
+.sidebar .input_container .checked .checkmark{position:absolute;left:-3px;top:-12px;font-size:2.4em;color:#685c79;cursor:pointer;user-select:none}
+.sidebar .input_container label{display:inline;vertical-align:text-top;padding:10px;font-family:"Didact Gothic",sans-serif;font-size:.8em;color:#da727e}
+@media(min-width:600px) and (max-width:1149px){.landing_container{width:360px}
+}@media(min-width:1150px){.landing_container{top:50px;width:550px}
+}@media(min-width:900px){.landing_container{width:550px}
+.logo{width:460px}
+.questions p{margin-top:5px;text-align:center}
+.questions .row1{font-size:1.8em}
+.questions .row2{margin-top:0;font-size:3.15em}
+.questions .row3{font-size:1.905em}
+.questions .row4{font-size:1.2em}
+.questions .yes{margin-top:10px;font-size:5.175em}
+.questions .row6{margin-top:10px;font-size:1.35em;margin-left:8%}
+.questions .gradient_border_illusion{width:441px;font-size:1.6em}
+.questions .gradient_border_illusion .button_div{width:435px}
+}
