@@ -114,7 +114,7 @@ body {
 .gradient_border {
   display: block;
   position: relative;
-  width: 424px;
+  width: 294px;
   height: 60px;
   margin: 50px auto 0;
   padding: 0 0 0 1px;
@@ -126,6 +126,10 @@ body {
   font-size: 1.4em;
   color: #fff;;
   transition: background-image .3s;
+
+  .button_div {
+    width: 288px;
+  }
 }
 
 .gradient_border.activated:hover {
@@ -377,7 +381,7 @@ body {
       margin-left: 8%
     }
 
-    .gradient_border_illusion {
+    .gradient_border {
       width: 441px;
       font-size: 1.6em;
 

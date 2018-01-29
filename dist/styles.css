@@ -14,7 +14,8 @@ body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Dida
 .questions .yes{margin-top:10px;font-size:3.45em}
 .questions .row6{margin-top:10px;line-height:26px;font-size:.9em;width:85%;text-align:left;margin-left:10%}
 .gradient_border.activated{color:#da727e}
-.gradient_border{display:block;position:relative;width:424px;height:60px;margin:50px auto 0;padding:0 0 0 1px;background-image:linear-gradient(to right,#ffbc67,#da727e);border-radius:11px;border:0;outline:0;font-family:"Didact Gothic",sans-serif;font-size:1.4em;color:#fff;transition:background-image .3s}
+.gradient_border{display:block;position:relative;width:294px;height:60px;margin:50px auto 0;padding:0 0 0 1px;background-image:linear-gradient(to right,#ffbc67,#da727e);border-radius:11px;border:0;outline:0;font-family:"Didact Gothic",sans-serif;font-size:1.4em;color:#fff;transition:background-image .3s}
+.gradient_border .button_div{width:288px}
 .gradient_border.activated:hover{box-shadow:0 8px 20px -9px #455c7b}
 .gradient_border.activated:hover .button_div{background-image:linear-gradient(to right,#ffbc67,#da727e);color:#fff;box-sizing:border-box;border:0;transition:box-shadow .6s,background-image .5}
 .gradient_border.activated:active{padding:27px 25px;background-image:linear-gradient(to right,#ffbc67,#da727e);box-shadow:0 0;color:#fff;box-sizing:border-box;border:0;transition:box-shadow .2s}
@@ -48,6 +49,6 @@ body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Dida
 .questions .row4{font-size:1.2em}
 .questions .yes{margin-top:10px;font-size:5.175em}
 .questions .row6{margin-top:10px;font-size:1.35em;margin-left:8%}
-.questions .gradient_border_illusion{width:441px;font-size:1.6em}
-.questions .gradient_border_illusion .button_div{width:435px}
+.questions .gradient_border{width:441px;font-size:1.6em}
+.questions .gradient_border .button_div{width:435px}
 }
