@@ -50,11 +50,13 @@ $(document).ready(function() {
     // Open the modal
     $modal.css('display', 'block');
     $modal.animate({opacity: 1});
-    // Set click handler
+    // Set up cancel button
     $cancelButton.on('click.cancel', function() {
       $modal.animate({opacity: 0}, function() {
         $modal.css('display', 'none');
         $cancelButton.off('click.cancel');
+        map.off('click', renderCreateModal);
+        resetPinTrigger();
       });
     });
     $modalCheckboxes.each(function() {
