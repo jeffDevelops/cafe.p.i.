@@ -52,12 +52,9 @@ $(document).ready(function() {
     $modal.animate({opacity: 1});
     // Set up cancel button
     $cancelButton.on('click.cancel', function() {
-      $modal.animate({opacity: 0}, function() {
-        $modal.css('display', 'none');
-        $cancelButton.off('click.cancel');
-        map.off('click', renderCreateModal);
-        resetPinTrigger();
-      });
+      resetModal();
+      map.off('click', renderCreateModal);
+      resetPinTrigger();
     });
     $modalCheckboxes.each(function() {
       $(this).data().checked = false;
@@ -84,18 +81,23 @@ $(document).ready(function() {
         coffeeShop[criterion] = $(this).data().checked;
         $(this).off('click.checkboxes');
       });
-      // Remove and reset modal
-      $modal.animate({opacity: 0}, function() {
-        $modal.css('display', 'none');
-        $submitButton.off('click.submit');
-        placeMarker(event);
-        $modalInput.val('');
-        $modalCheckboxes.each(function() {
-          $(this).data().checked = false;
-          $(this).parent().css('background-image', 'linear-gradient(to right, rgba(185, 185, 185, 1), rgba(185, 185, 185, 1))');
-          $(this).children().remove();
-          map.off('click', renderCreateModal);
-        });
+      placeMarker(event);
+      resetModal();
+    });
+  }
+
+  function resetModal() {
+    $modal.animate({opacity: 0}, function() {
+      $modal.css('display', 'none');
+      $cancelButton.off('click.cancel');
+      $modal.css('display', 'none');
+      $submitButton.off('click.submit');
+      $modalInput.val('');
+      $modalCheckboxes.each(function() {
+        $(this).data().checked = false;
+        $(this).parent().css('background-image', 'linear-gradient(to right, rgba(185, 185, 185, 1), rgba(185, 185, 185, 1))');
+        $(this).children().remove();
+        map.off('click', renderCreateModal);
       });
     });
   }
