@@ -47,37 +47,37 @@
     </div>
 
     <h2>i need a place with</h2>
-    <div id="filter" class="input_container">
+    <div class="input_container">
       <div class="checkmark_border">
         <div class="checked"></div>
       </div>
       <label>Consistent Wi-fi</label>
     </div>
-    <div id="filter" class="input_container">
+    <div class="input_container">
       <div class="checkmark_border">
         <div class="checked"></div>
       </div>
       <label>Accessible Power Outlets</label>
     </div>
-    <div id="filter" class="input_container checkbox">
+    <div class="input_container checkbox">
       <div class="checkmark_border">
         <div class="checked"></div>
       </div>
       <label>Decent Coffee</label>
     </div>
-    <div id="filter" class="input_container checkbox">
+    <div class="input_container checkbox">
       <div class="checkmark_border">
         <div class="checked"></div>
       </div>
       <label>Space To Sit Down</label>
     </div>
-    <div id="filter" class="input_container checkbox">
+    <div class="input_container checkbox">
       <div class="checkmark_border">
         <div class="checked"></div>
       </div>
       <label>Work-Conducive Atmosphere</label>
     </div>
-    <div id="filter" class="input_container checkbox">
+    <div class="input_container checkbox">
       <div class="checkmark_border">
         <div class="checked"></div>
       </div>
@@ -89,6 +89,56 @@
       <div class="button_div"><i class="material-icons">add_location</i>pin a new location</div>
     </button>
   </aside>
+
+  <div class="blur_effect">
+    <div class="modal">
+      <i id="cancel_button" class="material-icons cancel_button">cancel</i>
+      <div id="search" class="input_container">
+        <input type="text" name="coffeeShopName" />
+        <div class="gradient_input"></div>
+        <label for="coffeeShopName">Coffee Shop Name</label>
+      </div>
+      <div class="input_container">
+        <div class="checkmark_border">
+          <div class="checked" data-criteria="wifi"></div>
+        </div>
+        <label>Consistent Wi-fi</label>
+      </div>
+      <div class="input_container">
+        <div class="checkmark_border">
+          <div class="checked" data-criteria="outlets"></div>
+        </div>
+        <label>Accessible Power Outlets</label>
+      </div>
+      <div class="input_container checkbox">
+        <div class="checkmark_border">
+          <div class="checked" data-criteria="goodCoffee"></div>
+        </div>
+        <label>Decent Coffee</label>
+      </div>
+      <div class="input_container checkbox">
+        <div class="checkmark_border">
+          <div class="checked" data-criteria="spaceToSitDown"></div>
+        </div>
+        <label>Space To Sit Down</label>
+      </div>
+      <div class="input_container checkbox">
+        <div class="checkmark_border">
+          <div class="checked" data-criteria="workEnvironment"></div>
+        </div>
+        <label>Work-Conducive Atmosphere</label>
+      </div>
+      <div class="input_container checkbox">
+        <div class="checkmark_border">
+          <div class="checked" data-criteria="comfortableSeating"></div>
+        </div>
+        <label>Comfortable Seating</label>
+      </div>
+      <button id="submit_form" class="gradient_border small activated">
+        <div class="button_div"><i class="material-icons">local_cafe</i>add coffee shop</div>
+      </button>
+    </div>
+  </div>
   
   <div id='map'></div>
   <script>

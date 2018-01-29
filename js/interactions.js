@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-  $landingContainer = $('.landing_container');
-  $sidebar = $('.sidebar');
-  $textInputs = $(':text');
-  $checkboxes = $('.checked');
+  var $landingContainer = $('.landing_container');
+  var $sidebar = $('.sidebar');
+  var $textInputs = $(':text');
+  var $sidebarCheckboxes = $('aside .checked');
 
   // Hide landing div
   $('#mapbox_trigger').on('click', function() {
@@ -24,7 +24,7 @@ $(document).ready(function() {
     });
   });
 
-  $checkboxes.each(function() {
+  $sidebarCheckboxes.each(function() {
     $(this).data('checked', false);
     $(this).on('click', function() {
       if (!$(this).data().checked) {

@@ -4,14 +4,19 @@ $blue: #455C7B;
 $goldenrod: rgba(255, 188, 103, 1);
 $font: 'Didact Gothic', sans-serif;
 
+html {
+  min-height: 100%;
+}
+
 body {
   position: absolute;
   z-index: -100;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   font-family: $font;
 }
 
+// MAP STYLES
 #map {
   position: absolute;
   top: 0;
@@ -31,6 +36,13 @@ body {
   margin-top: -50px;
   z-index: 2;
 }
+
+.leaflet-popup-tip {
+  height: 9000px;
+}
+
+
+// APP STYLES
 
 .landing_container {
   position: absolute;
@@ -102,7 +114,7 @@ body {
 .gradient_border {
   display: block;
   position: relative;
-  width: 310px;
+  width: 424px;
   height: 60px;
   margin: 50px auto 0;
   padding: 0 0 0 1px;
@@ -160,7 +172,7 @@ body {
   left: 2px;
   right: 2px;
   bottom: 2px;
-  width: 304px;
+  width: 418px;
   height: 54px;
   display: block;
   margin: auto;
@@ -175,10 +187,13 @@ body {
 .sidebar {
   transform: translate(-999px);
   width: 300px;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, .85);
+  min-height: 100vh;
+  background-color: rgba(255, 255, 255, .95);
   padding: 5px;
   transition: transform .5s;
+}
+
+.sidebar, .modal {
 
   h2 {
     font-size: 1.6em;
@@ -251,10 +266,53 @@ body {
     label {
       display: inline;
       vertical-align: text-top;
-      padding: 10px;
       font-family: $font;
-      font-size: .8em;
+      font-size: 1em;
       color: $magenta;
+    }
+  }
+}
+
+.blur_effect {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .4);
+
+  .modal {
+    position: relative;
+    padding-top: 25px;
+    top: 20vh;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 480px;
+    width: 380px;
+    background-color: rgba(255, 255, 255, .95);
+    border-radius: 8px;
+    box-shadow: 0 8px 20px -9px $blue;
+
+
+    .input_container:first-child {
+      margin-top: 55px;
+    }
+    
+    .cancel_button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: $magenta;
+      background-color: transparent;
+      font-size: 3em;
+      cursor: pointer;
+    }
+
+    button {
+      margin-top: 45px;
     }
   }
 }
