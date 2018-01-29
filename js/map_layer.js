@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
   // Sidebar
+  var $sidebar = $('.sidebar');
   var $pinToolTrigger = $('#trigger_pin_tool');
 
   // Map
@@ -14,7 +15,7 @@ $(document).ready(function() {
   var $modalInput = $('.blur_effect .modal :text');
   var $modalCheckboxes = $('.blur_effect .modal .checked');
 
-
+  // Data
   var coffeeShop = {
     name: '',
     wifi: false,
@@ -28,6 +29,8 @@ $(document).ready(function() {
   $pinToolTrigger.on('click.pin', addPinToMap);
 
   function addPinToMap() {
+    // Hide sidebar to allow interaction with the map
+    $sidebar.css('transform', 'translate(-999px)');
     $pinToolTrigger.css({
       'background-image': 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)',
       'background-color': 'rgba(0, 0, 0, 0)'
@@ -39,7 +42,7 @@ $(document).ready(function() {
     $pinToolTrigger.off('click.pin');
     // Change the cursor to indicate user can place pin
     $cursorArea.css('cursor', 'copy');
-    // Get lat and long of click
+    // Render modal to ask for details about pin
     map.on('click', renderCreateModal);
   }
 
@@ -55,8 +58,9 @@ $(document).ready(function() {
       });
     });
     $modalCheckboxes.each(function() {
-      $(this).data('checked', false);
-      $(this).on('click', function() {
+      $(this).data().checked = false;
+      $(this).on('click.checkboxes', function() {
+        console.log($(this).data().checked);
         if (!$(this).data().checked) {
           $(this).data().checked = true;
           $(this).parent().css('background-image', 'linear-gradient(to right, rgba(255, 188, 103, 1), rgba(218, 114, 126, 1))');
@@ -76,11 +80,20 @@ $(document).ready(function() {
       $modalCheckboxes.each(function() {
         var criterion = $(this).data('criteria');
         coffeeShop[criterion] = $(this).data().checked;
+        $(this).off('click.checkboxes');
       });
+      // Remove and reset modal
       $modal.animate({opacity: 0}, function() {
         $modal.css('display', 'none');
         $submitButton.off('click.submit');
         placeMarker(event);
+        $modalInput.val('');
+        $modalCheckboxes.each(function() {
+          $(this).data().checked = false;
+          $(this).parent().css('background-image', 'linear-gradient(to right, rgba(185, 185, 185, 1), rgba(185, 185, 185, 1))');
+          $(this).children().remove();
+          map.off('click', renderCreateModal);
+        });
       });
     });
   }
@@ -122,6 +135,8 @@ $(document).ready(function() {
   }
 
   function resetPinTrigger(event) {
+    // Reopen the sidebar
+    $sidebar.css('transform', 'translate(0)');
     // Reset cursor to hand and reactivate the pin tool button
     $cursorArea.css('cursor', 'pointer');
     $pinToolTrigger.css('background-image', 'linear-gradient(to right, rgba(255, 188, 103, 1), rgba(218, 114, 126, 1)');
