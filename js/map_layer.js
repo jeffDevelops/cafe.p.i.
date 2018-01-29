@@ -102,7 +102,7 @@ $(document).ready(function() {
     geojson.features.forEach(function(marker) {
       console.log(marker.properties.coffeeShop);
       var marker_img = document.createElement('img');
-      marker_img.src = '../assets/coffee_marker.png';
+      marker_img.src = './assets/coffee_marker.png';
       marker_img.className = 'marker';
       var popup = '<h1>'+ marker.properties.coffeeShop.name +'</h1>';
       new mapboxgl.Popup({
