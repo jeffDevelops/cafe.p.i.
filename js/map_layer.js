@@ -7,6 +7,7 @@ $(document).ready(function() {
   // Map
   var $cursorArea = $('.mapboxgl-canvas-container.mapboxgl-interactive, .mapboxgl-ctrl-nav-compass');
   var $map = $('#map');
+  var $marker = $('.marker.map');
 
   // Create Modal
   var $modal = $('.blur_effect');
@@ -82,6 +83,7 @@ $(document).ready(function() {
         $(this).off('click.checkboxes');
       });
       placeMarker(event);
+
       resetModal();
     });
   }
@@ -121,12 +123,21 @@ $(document).ready(function() {
       var marker_img = document.createElement('img');
       marker_img.src = './assets/coffee_marker.png';
       marker_img.className = 'marker';
-      var popup = '<h1>'+ marker.properties.coffeeShop.name +'</h1>';
+      var popup = '' +
+        '<div class="popup">' +
+        '<h1 class="popup_header">' + marker.properties.coffeeShop.name + '</h1>' + 
+        '<p>' + (marker.properties.coffeeShop.comfortableSeating ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'comfortable seating</p>' + 
+        '<p>' + (marker.properties.coffeeShop.goodCoffee ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'good coffee</p>' + 
+        '<p>' + (marker.properties.coffeeShop.spaceToSitDown ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'space to sit down</p>' +
+        '<p>' + (marker.properties.coffeeShop.workEnvironment ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'work-conducive atmosphere</p>' +
+        '<p>' + (marker.properties.coffeeShop.wifi === true ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'wi-fi</p>' +
+        '<p>' + (marker.properties.coffeeShop.outlets === true ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'accessible outlets</p>' +
+        '</div>';
       new mapboxgl.Popup({
         offset: 25,
-        closeButton: true,
+        closeButton: false,
         anchor: 'top',
-        closeOnClick: true
+        closeOnClick: false
       })
         .setHTML(popup)
         .setLngLat(marker.geometry.coordinates)
