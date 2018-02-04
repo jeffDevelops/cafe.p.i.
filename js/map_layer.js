@@ -17,40 +17,25 @@ $(document).ready(function() {
   var $modalCheckboxes = $('.blur_effect .modal .checked');
 
   // Data
-  var coffeeShop = {
-    name: '',
-    wifi: false,
-    outlets: false,
-    workEnvironment: false,
-    comfortableSeating: false,
-    goodCoffee: false,
-    spaceToSitDown: false
+  function coffeeShop(name, coordinates, address, wifi, outlets, workEnvironment, comfortableSeating, goodCoffee, spaceToSitDown) {
+    this.name = name;
+    this.coordinates = coordinates;
+    this.address = address;
+    this.wifi = wifi;
+    this.outlets = outlets;
+    this.workEnvironment = workEnvironment;
+    this.comfortableSeating = comfortableSeating;
+    this.goodCoffee = goodCoffee;
+    this.spaceToSitDown = spaceToSitDown;
   }
+
   var newCoffeeShops = [];
   var markers = [];
   
   // INITIALIZE MAP
-  function reinitializeMap(feature) {
-    newCoffeeShops.push(feature);
-    console.log(newCoffeeShops);
-    
-    coffeeShopsLayer = {
-      "id": "coffeeShops",
-      "type": "symbol",
-      "source": {
-        "type": "geojson",
-        "data": {
-          "type": "FeatureCollection",
-          "features": newCoffeeShops
-        }
-      },
-      "layout": {
-        "icon-allow-overlap": true
-      }
-    };
+  function reinitializeMap() {
 
-    console.log('COFFEESHOPS ARRAY: ', newCoffeeShops);
-
+    // Reset Map, CoffeeShops Layer, Markers, and click listeners
     if (map.getLayer('coffeeShops')) {
       map.removeLayer('coffeeShops');
     }
@@ -63,45 +48,87 @@ $(document).ready(function() {
     });
     markers = [];
 
+    // Define the Coffee Shops layer and associated data
+    coffeeShopsLayer = {
+      "id": "coffeeShops",
+      "type": "symbol",
+      "source": {
+        "type": "geojson",
+        "data": {
+          "type": "FeatureCollection",
+          "features": []
+        }
+      },
+      "layout": {
+        "icon-allow-overlap": true
+      }
+    };
+
+    // Push new coffee shops into the coffeeShops layer
+    newCoffeeShops.forEach(function(cafe) {
+      coffeeShopsLayer.source.data.features.push({
+        "type": "feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [cafe.coordinates.lng, cafe.coordinates.lat]
+        },
+        "properties": {
+          "name": cafe.name,
+          "coordinates": cafe.coordinates,
+          "address": cafe.address,
+          "wifi": cafe.wifi,
+          "outlets": cafe.outlets,
+          "workEnvironment": cafe.workEnvironment,
+          "comfortableSeating": cafe.comfortableSeating,
+          "spaceToSitDown": cafe.spaceToSitDown,
+          "goodCoffee": cafe.goodCoffee
+        }
+      });
+    });
+
+    // Add the layer to the map
     map.addLayer(coffeeShopsLayer);
 
-    var popupContent = '' +
-      '<div class="popup">' +
-      '<h1 class="popup_header">' + feature.properties.coffeeShop.name + '</h1>' + 
-      '<p>' + (feature.properties.coffeeShop.comfortableSeating ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'comfortable seating</p>' + 
-      '<p>' + (feature.properties.coffeeShop.goodCoffee ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'good coffee</p>' + 
-      '<p>' + (feature.properties.coffeeShop.spaceToSitDown ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'space to sit down</p>' +
-      '<p>' + (feature.properties.coffeeShop.workEnvironment ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'work-conducive atmosphere</p>' +
-      '<p>' + (feature.properties.coffeeShop.wifi === true ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'wi-fi</p>' +
-      '<p>' + (feature.properties.coffeeShop.outlets === true ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'accessible outlets</p>' +
-      '</div>';
-    
-    coffeeShopsLayer.source.data.features.forEach(function(marker) {
-      
+    // Generate popups for each coffeeShop in the layer
+    coffeeShopsLayer.source.data.features.forEach(function(cafe) {
+      console.log(cafe);
+
+      // Generate HTML structure for rendering data for each coffeeShop
+      var popupContent = '' +
+        '<div class="popup">' +
+        '<h1 class="popup_header">' + cafe.properties.name + '</h1>' + 
+        '<p>' + (cafe.properties.comfortableSeating ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'comfortable seating</p>' + 
+        '<p>' + (cafe.properties.goodCoffee ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'good coffee</p>' + 
+        '<p>' + (cafe.properties.spaceToSitDown ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'space to sit down</p>' +
+        '<p>' + (cafe.properties.workEnvironment ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'work-conducive atmosphere</p>' +
+        '<p>' + (cafe.properties.wifi === true ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'wi-fi</p>' +
+        '<p>' + (cafe.properties.outlets === true ? '<i class="material-icons">check</i>' : '<i class="material-icons">not_interested</i>') + 'accessible outlets</p>' +
+        '</div>';
+
       var marker_img = document.createElement('img');
       marker_img.src = './assets/coffee_marker.png';
       marker_img.className = 'marker';
-
+  
       var popup = new mapboxgl.Popup({
         offset: 25,
         closeButton: false,
         anchor: 'top',
         closeOnClick: false
       }).setHTML(popupContent)
-        .setLngLat(marker.geometry.coordinates);
-      
-      var newMarker = new mapboxgl.Marker(marker_img)
-        .setLngLat(marker.geometry.coordinates)
+        .setLngLat(cafe.geometry.coordinates);
+        
+      var newMarker = new mapboxgl.Marker(marker_img, {offset: [0,0]})
+        .setLngLat([cafe.properties.coordinates.lng, cafe.properties.coordinates.lat])
         .setPopup(popup)
         .addTo(map);
-      
+        
       markers.push(newMarker);
 
       markers.forEach(function(marker) {
         marker.addTo(map);
       });
     });
-
+  
     //Apply interaction listeners to map features
     map.on('click.triggerPopup', 'coffeeShops', function(event) {
       console.log(event);
@@ -133,6 +160,9 @@ $(document).ready(function() {
   }
 
   function renderCreateModal(event) {
+    console.log(event);
+    coordinates = event.lngLat;
+    console.log(coordinates);
     // Open the modal
     $modal.css('display', 'block');
     $modal.animate({opacity: 1});
@@ -160,15 +190,20 @@ $(document).ready(function() {
     $submitButton.on('click.submit', function() {
       // Get value of input
       var name = $modalInput.val();
-      coffeeShop.name = name;
+      var newCoffeeShop = new coffeeShop();
+      newCoffeeShop.name = name;
+      newCoffeeShop.coordinates = coordinates;
       // Get value of checkboxes
       $modalCheckboxes.each(function() {
         var criterion = $(this).data('criteria');
-        coffeeShop[criterion] = $(this).data().checked;
+        newCoffeeShop[criterion] = $(this).data().checked;
         $(this).off('click.checkboxes');
       });
-      placeMarker(event);
 
+      console.log(newCoffeeShop);
+      // placeMarker(event);
+      newCoffeeShops.push(newCoffeeShop);
+      reinitializeMap();
       resetModal();
     });
   }
@@ -199,7 +234,6 @@ $(document).ready(function() {
       },
       "properties": { coffeeShop }
     };
-
     reinitializeMap(geojson);
   }
 
