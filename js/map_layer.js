@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   // Landing Div
   var $landingContainer = $('.landing_container');
 
@@ -54,31 +53,9 @@ $(document).ready(function() {
   var newCoffeeShops = [];
   var markers = [];
 
-  // HTTP
-  var backendHost;
-  var hostname = window && window.location && window.location.hostname;
-
-  console.log(hostname);
-
-  if (hostname == 'jeffdevelops.github.io') {
-    backendHost = 'https://cafepi.herokuapp.com';
-  } else if (hostname === '<INSERT STAGING DOMAIN HERE>') {
-    backendHost = 'https://<INSERT STAGING DOMAIN HERE>';
-  } else {
-    backendHost = 'http://localhost:8888';
-  }
-  
-  var API_ROOT = backendHost + '/api';
-  var url = API_ROOT + '/coffee_shops';
-
   // INITIALIZE MAP
   map.on('load', function() {
-    $.ajax({
-      type: 'GET',
-      url: url,
-      dataType: 'json',
-    }).done(function(response) {
-      console.log(response);
+    getAllCoffeeShops().then(function(response) {
       initializeMap(response);
     });
   });
@@ -340,16 +317,8 @@ $(document).ready(function() {
         $(this).off('click.checkboxes');
       });
 
-      // Persist the coffeeshop in the database
-      $.ajax({
-        method: 'POST',
-        url: url,
-        dataType: 'json',
-        data: {data: JSON.stringify(newCoffeeShop)}
-      }).done(function(response) {
-        console.log('hello from ajax');
-        console.log(response);
-      });
+      // API CALL HERE!
+      createNewCoffeeShop(newCoffeeShop);
 
       newCoffeeShops.push(newCoffeeShop);
       refreshMap();
