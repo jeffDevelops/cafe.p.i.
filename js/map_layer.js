@@ -54,7 +54,7 @@ $(document).ready(function() {
 
   console.log(hostname);
 
-  if (hostname === 'https://jeffdevelops.github.io/cafe.p.i./') {
+  if (hostname === 'jeffdevelops.github.io') {
     backendHost = 'https://cafepi.herokuapp.com/';
   } else if (hostname === '<INSERT STAGING DOMAIN HERE>') {
     backendHost = 'https://<INSERT STAGING DOMAIN HERE>';
