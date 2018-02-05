@@ -231,6 +231,10 @@ body {
     margin: 50px auto 25px;
   }
 
+  #search.input_container label {
+    margin: 0;
+  }
+
   .input_container {
     position: relative;
     margin: 25px auto 0;
@@ -295,6 +299,7 @@ body {
     label {
       display: inline;
       vertical-align: text-top;
+      margin-left: 15px;
       font-family: $font;
       font-size: 1em;
       color: $magenta;

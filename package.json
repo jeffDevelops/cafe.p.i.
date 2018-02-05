@@ -10,6 +10,7 @@
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
+    "browserify": "^15.2.0",
     "gulp-minifier": "^1.1.0"
   }
 }

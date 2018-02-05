@@ -31,10 +31,25 @@ $(document).ready(function() {
 
   var newCoffeeShops = [];
   var markers = [];
+
+  // HTTP
+  var backendHost;
+  var hostname = window && window.location && window.location.hostname;
+
+  if (hostname === '<INSERT PRODUCTION DOMAIN HERE>') {
+    backendHost = 'https://<INSERT PRODUCTION DOMAIN HERE>';
+  } else if (hostname === '<INSERT STAGING DOMAIN HERE>') {
+    backendHost = 'https://<INSERT STAGING DOMAIN HERE>';
+  } else {
+    backendHost = 'http://localhost:8888';
+  }
+  
+  var API_ROOT = backendHost + '/api';
+
   
   // INITIALIZE MAP
   function reinitializeMap() {
-
+    console.log('hello?');
     // Reset Map, CoffeeShops Layer, Markers, and click listeners
     if (map.getLayer('coffeeShops')) {
       map.removeLayer('coffeeShops');
@@ -116,6 +131,8 @@ $(document).ready(function() {
         closeOnClick: false
       }).setHTML(popupContent)
         .setLngLat(cafe.geometry.coordinates);
+
+      console.log(cafe.properties.coordinates.lng);
         
       var newMarker = new mapboxgl.Marker(marker_img, {offset: [0,0]})
         .setLngLat([cafe.properties.coordinates.lng, cafe.properties.coordinates.lat])
@@ -201,7 +218,19 @@ $(document).ready(function() {
       });
 
       console.log(newCoffeeShop);
-      // placeMarker(event);
+
+      // Persist the coffeeshop in the database
+      var url = API_ROOT + '/coffee_shops';
+      $.ajax({
+        method: 'POST',
+        url: url,
+        data: newCoffeeShop
+      }).done(function(response) {
+        console.log('hello from ajax');
+        console.log(response);
+      });
+
+      console.log(newCoffeeShop);
       newCoffeeShops.push(newCoffeeShop);
       reinitializeMap();
       resetModal();
@@ -224,18 +253,18 @@ $(document).ready(function() {
     });
   }
 
-  function placeMarker(event) {
-    var coordinates = event.lngLat;
-    var geojson = {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [coordinates.lng, coordinates.lat]
-      },
-      "properties": { coffeeShop }
-    };
-    reinitializeMap(geojson);
-  }
+  // function placeMarker(event) {
+  //   var coordinates = event.lngLat;
+  //   var geojson = {
+  //     "type": "Feature",
+  //     "geometry": {
+  //       "type": "Point",
+  //       "coordinates": [coordinates.lng, coordinates.lat]
+  //     },
+  //     "properties": { coffeeShop }
+  //   };
+  //   reinitializeMap(geojson);
+  // }
 
   function resetPinTrigger(event) {
     // Reopen the sidebar
@@ -248,7 +277,6 @@ $(document).ready(function() {
     });
     $pinToolTrigger.toggleClass('activated');
     $pinToolTrigger.on('click.pin', addPinToMap);
-    map.off('click', placeMarker);
   }
 
 });

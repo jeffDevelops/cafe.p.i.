@@ -29,6 +29,7 @@ body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Dida
 .button_div{position:absolute;box-sizing:border-box;top:2px;left:2px;right:2px;bottom:2px;width:418px;height:54px;display:block;margin:auto;padding:16px;border:0;background-color:#fff;border-radius:9px;outline:0;line-height:20px}
 .sidebar{transform:translate(-999px);width:300px;min-height:100vh;background-color:rgba(255,255,255,.95);padding:5px;transition:transform .5s}
 .modal h2,.sidebar h2{font-size:1.6em;color:#685c79;width:85%;margin:50px auto 25px}
+.modal #search.input_container label,.sidebar #search.input_container label{margin:0}
 .modal .input_container,.sidebar .input_container{position:relative;margin:25px auto 0;width:85%;z-index:1}
 .modal .input_container input[type=text],.sidebar .input_container input[type=text]{width:100%;background-color:transparent;outline:0;border:0;padding:5px 0;font-size:1.2em;color:#685c79}
 .modal .input_container i,.sidebar .input_container i{position:absolute;top:5px;right:0;color:#da727e;cursor:pointer}
@@ -36,7 +37,7 @@ body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Dida
 .modal .input_container .checkmark_border,.sidebar .input_container .checkmark_border{display:inline-block;height:24px;width:24px;padding:1px;background-image:linear-gradient(to right,#b9b9b9,#b9b9b9);border-radius:2px}
 .modal .input_container .checked,.sidebar .input_container .checked{position:relative;height:22px;width:22px;background:#fff;margin:1px auto;border-radius:1px;cursor:pointer}
 .modal .input_container .checked .checkmark,.sidebar .input_container .checked .checkmark{position:absolute;left:-3px;top:-12px;font-size:2.4em;color:#685c79;cursor:pointer;user-select:none}
-.modal .input_container label,.sidebar .input_container label{display:inline;vertical-align:text-top;font-family:"Didact Gothic",sans-serif;font-size:1em;color:#da727e}
+.modal .input_container label,.sidebar .input_container label{display:inline;vertical-align:text-top;margin-left:15px;font-family:"Didact Gothic",sans-serif;font-size:1em;color:#da727e}
 .blur_effect{display:none;opacity:0;position:absolute;top:0;left:0;width:100vw;height:100%;background-color:rgba(0,0,0,.4)}
 .blur_effect .modal{position:relative;padding-top:25px;top:20vh;right:0;left:0;margin:auto;height:480px;width:380px;background-color:rgba(255,255,255,.95);border-radius:8px;box-shadow:0 8px 20px -9px #455c7b}
 .blur_effect .modal .input_container:first-child{margin-top:55px}
