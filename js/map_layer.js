@@ -52,6 +52,8 @@ $(document).ready(function() {
   var backendHost;
   var hostname = window && window.location && window.location.hostname;
 
+  console.log(hostname);
+
   if (hostname === 'https://jeffdevelops.github.io/cafe.p.i./') {
     backendHost = 'https://cafepi.herokuapp.com/';
   } else if (hostname === '<INSERT STAGING DOMAIN HERE>') {
