@@ -90,6 +90,7 @@ $(document).ready(function() {
       $sidebar.css('transform', 'translate(0)');
       $sidebar.data('visible', true);
       $menuToggle.css({
+        'display': 'block',
         'top': '0',
         'left': '0',
         'box-shadow': 'none',

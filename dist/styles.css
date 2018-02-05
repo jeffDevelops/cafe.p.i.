@@ -7,7 +7,7 @@ body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Dida
 .mapboxgl-popup-content .popup .popup_header{font-size:1.5em;font-weight:600;margin-bottom:25px;text-transform:uppercase;letter-spacing:1px}
 .mapboxgl-popup-content .popup p{display:flex;align-items:center;font-size:1.4em;line-height:42px}
 .mapboxgl-popup-content .popup p i{margin-right:15px}
-.menu_toggle.material-icons{position:absolute;top:15px;left:5px;font-size:3em;padding:20px;cursor:pointer;color:#da727e;z-index:3;background-color:rgba(255,255,255,.85);border-radius:50%;box-shadow:0 8px 20px -9px #455c7b;transition:all .5s}
+.menu_toggle.material-icons{display:none;position:absolute;top:15px;left:5px;font-size:3em;padding:20px;cursor:pointer;color:#da727e;z-index:3;background-color:rgba(255,255,255,.85);border-radius:50%;box-shadow:0 8px 20px -9px #455c7b;transition:all .5s}
 .menu_toggle.material-icons:active{box-shadow:none;transition:all .3s}
 .menu_toggle.material-icons:hover{transition:all .5s;color:#ffbc67}
 .landing_container{position:absolute;width:360px;top:25px;left:1px;right:1px;margin:0 auto 0;z-index:2;background-color:rgba(255,255,255,.95);border-radius:7px;padding:50px 0}
