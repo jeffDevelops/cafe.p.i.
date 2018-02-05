@@ -66,13 +66,15 @@ $(document).ready(function() {
   var url = API_ROOT + '/coffee_shops';
 
   // INITIALIZE MAP
-  $.ajax({
-    type: 'GET',
-    url: url,
-    dataType: 'json',
-  }).done(function(response) {
-    console.log(response);
-    initializeMap(response);
+  map.on('load', function() {
+    $.ajax({
+      type: 'GET',
+      url: url,
+      dataType: 'json',
+    }).done(function(response) {
+      console.log(response);
+      initializeMap(response);
+    });
   });
 
   function initializeMap(coffeeShopsArray) {
