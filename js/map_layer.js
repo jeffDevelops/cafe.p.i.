@@ -152,7 +152,7 @@ $(document).ready(function() {
       }).setHTML(popupContent)
         .setLngLat(cafe.geometry.coordinates);
         
-      var newMarker = new mapboxgl.Marker(marker_img, {offset: [0,0]})
+      var newMarker = new mapboxgl.Marker(marker_img, {offset: [0,-30]})
         .setLngLat(cafe.geometry.coordinates)
         .setPopup(popup)
         .addTo(map);
