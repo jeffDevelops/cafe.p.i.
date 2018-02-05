@@ -1,7 +1,7 @@
 html{min-height:100%}
 body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Didact Gothic",sans-serif}
 #map{position:absolute;top:0;left:0;right:0;bottom:0;margin:0 auto;height:100vh;width:100vw;z-index:-1;opacity:1}
-.marker{width:45px;margin-top:-50px;z-index:2}
+.marker{width:45px;z-index:2}
 .mapboxgl-popup-content{padding:25px}
 .mapboxgl-popup-content .popup{width:300px;height:300px;font-family:"Didact Gothic",sans-serif}
 .mapboxgl-popup-content .popup .popup_header{font-size:1.5em;font-weight:600;margin-bottom:25px;text-transform:uppercase;letter-spacing:1px}
