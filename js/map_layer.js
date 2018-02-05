@@ -5,6 +5,7 @@ $(document).ready(function() {
 
   // Sidebar
   var $sidebar = $('.sidebar');
+  var $menuToggle = $('.menu_toggle');
   var $pinToolTrigger = $('#trigger_pin_tool');
   var $textInputs = $(':text');
   var $sidebarCheckboxes = $('aside .checked');
@@ -87,7 +88,37 @@ $(document).ready(function() {
     $landingContainer.animate({opacity: 0}, function() {
       $(this).css('display', 'none');
       $sidebar.css('transform', 'translate(0)');
+      $sidebar.data('visible', true);
+      $menuToggle.css({
+        'top': '0',
+        'left': '0',
+        'box-shadow': 'none',
+        'background-color': 'transparent'
+      });
     });
+  });
+
+  // Toggle the sidebar
+  $('.menu_toggle').on('click', function() {
+    if ($sidebar.data().visible === true) {
+      $sidebar.css('transform', 'translate(-999px)');
+      $sidebar.data('visible', false);
+      $menuToggle.css({
+        'top': '15px',
+        'left': '5px',
+        'box-shadow': '0 8px 20px -9px #455C7B',
+        'background-color': 'rgba(255, 255, 255, .85)'
+      });
+    } else {
+      $sidebar.css('transform', 'translate(0)');
+      $sidebar.data('visible', true);
+      $menuToggle.css({
+        'top': '0',
+        'left': '0',
+        'box-shadow': 'none',
+        'background-color': 'transparent'
+      });
+    }
   });
 
   function initializeMap(coffeeShopsArray) {

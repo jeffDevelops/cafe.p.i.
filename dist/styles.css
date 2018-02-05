@@ -1,12 +1,15 @@
 html{min-height:100%}
 body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Didact Gothic",sans-serif}
-#map{position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;height:100vh;width:100vw;z-index:-1;opacity:1}
+#map{position:absolute;top:0;left:0;right:0;bottom:0;margin:0 auto;height:100vh;width:100vw;z-index:-1;opacity:1}
 .marker{width:45px;margin-top:-50px;z-index:2}
 .mapboxgl-popup-content{padding:25px}
 .mapboxgl-popup-content .popup{width:300px;height:300px;font-family:"Didact Gothic",sans-serif}
 .mapboxgl-popup-content .popup .popup_header{font-size:1.5em;font-weight:600;margin-bottom:25px;text-transform:uppercase;letter-spacing:1px}
 .mapboxgl-popup-content .popup p{display:flex;align-items:center;font-size:1.4em;line-height:42px}
 .mapboxgl-popup-content .popup p i{margin-right:15px}
+.menu_toggle.material-icons{position:absolute;top:15px;left:5px;font-size:3em;padding:20px;cursor:pointer;color:#da727e;z-index:3;background-color:rgba(255,255,255,.85);border-radius:50%;box-shadow:0 8px 20px -9px #455c7b;transition:all .5s}
+.menu_toggle.material-icons:active{box-shadow:none;transition:all .3s}
+.menu_toggle.material-icons:hover{transition:all .5s;color:#ffbc67}
 .landing_container{position:absolute;width:360px;top:25px;left:1px;right:1px;margin:0 auto 0;z-index:2;background-color:rgba(255,255,255,.95);border-radius:7px;padding:50px 0}
 .logo{display:block;width:310px;margin:0 auto}
 .questions{color:#685c79;font-family:"Didact Gothic",sans-serif;max-width:500px;min-width:295px;margin:50px auto 0}
@@ -28,7 +31,8 @@ body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Dida
 .gradient_border.small .button_div i{margin:8px 5px 0 0;font-size:1em}
 .button_div{position:absolute;box-sizing:border-box;top:2px;left:2px;right:2px;bottom:2px;width:418px;height:54px;display:block;margin:auto;padding:16px;border:0;background-color:#fff;border-radius:9px;outline:0;line-height:20px}
 .sidebar{transform:translate(-999px);width:280px;min-height:100vh;background-color:rgba(255,255,255,.95);padding:5px;transition:transform .5s}
-.modal h2,.sidebar h2{font-size:1.6em;color:#685c79;width:85%;margin:50px auto 25px}
+.modal h2,.sidebar h2{font-size:1.3em;color:#685c79;width:85%;margin:25px auto 15px}
+.modal .input_container#search,.sidebar .input_container#search{margin-top:60px}
 .modal .text_input.input_container label,.sidebar .text_input.input_container label{margin:0}
 .modal .text_input.input_container.last,.sidebar .text_input.input_container.last{margin-bottom:50px}
 .modal .input_container.checkbox,.sidebar .input_container.checkbox{display:flex;align-items:center}
