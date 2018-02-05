@@ -31,7 +31,7 @@ body {
 }
 
 .marker {
-  width: 80px;
+  width: 45px;
   margin-top: -50px;
   z-index: 2;
 }
@@ -68,7 +68,6 @@ body {
 
 
 // APP STYLES
-
 .landing_container {
   position: absolute;
   width: 360px;
@@ -141,7 +140,7 @@ body {
   position: relative;
   width: 294px;
   height: 60px;
-  margin: 50px auto 0;
+  margin: 25px auto 0;
   padding: 0 0 0 1px;
   background-image: linear-gradient(to right, $goldenrod, $magenta);
   border-radius: 11px;
@@ -215,7 +214,7 @@ body {
 
 .sidebar {
   transform: translate(-999px);
-  width: 300px;
+  width: 280px;
   min-height: 100vh;
   background-color: rgba(255, 255, 255, .95);
   padding: 5px;
@@ -231,13 +230,22 @@ body {
     margin: 50px auto 25px;
   }
 
-  #search.input_container label {
+  .text_input.input_container label {
     margin: 0;
+  }
+
+  .text_input.input_container.last {
+    margin-bottom: 50px;
+  }
+
+  .input_container.checkbox {
+    display: flex;
+    align-items: center;
   }
 
   .input_container {
     position: relative;
-    margin: 25px auto 0;
+    margin: 10px auto 0;
     width: 85%;
     z-index: 1;
   

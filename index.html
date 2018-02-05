@@ -47,13 +47,13 @@
     </div>
 
     <h2>I need a place with</h2>
-    <div class="input_container">
+    <div class="input_container checkbox">
       <div class="checkmark_border">
         <div class="checked"></div>
       </div>
       <label>Consistent Wi-fi</label>
     </div>
-    <div class="input_container">
+    <div class="input_container checkbox">
       <div class="checkmark_border">
         <div class="checked"></div>
       </div>
@@ -93,18 +93,23 @@
   <div class="blur_effect">
     <div class="modal">
       <i id="cancel_button" class="material-icons cancel_button">cancel</i>
-      <div id="search" class="input_container">
+      <div id="name" class="input_container text_input">
         <input type="text" name="coffeeShopName" />
         <div class="gradient_input"></div>
         <label for="coffeeShopName">Coffee Shop Name</label>
       </div>
-      <div class="input_container">
+      <div id="address" class="input_container text_input last">
+        <input type="text" name="coffeeShopAddress" />
+        <div class="gradient_input"></div>
+        <label for="coffeeShopAddress">Address</label>
+      </div>
+      <div class="input_container checkbox">
         <div class="checkmark_border">
           <div class="checked" data-criteria="wifi"></div>
         </div>
         <label>Consistent Wi-fi</label>
       </div>
-      <div class="input_container">
+      <div class="input_container checkbox">
         <div class="checkmark_border">
           <div class="checked" data-criteria="outlets"></div>
         </div>
@@ -151,9 +156,6 @@
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-  <script src="./js/http.js"></script>
-  <script src="./js/interactions.js"></script>
   <script src="./js/map_layer.js"></script>
 </body>
 </html>

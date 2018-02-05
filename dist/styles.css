@@ -1,7 +1,7 @@
 html{min-height:100%}
 body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Didact Gothic",sans-serif}
 #map{position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;height:100vh;width:100vw;z-index:-1;opacity:1}
-.marker{width:80px;margin-top:-50px;z-index:2}
+.marker{width:45px;margin-top:-50px;z-index:2}
 .mapboxgl-popup-content{padding:25px}
 .mapboxgl-popup-content .popup{width:300px;height:300px;font-family:"Didact Gothic",sans-serif}
 .mapboxgl-popup-content .popup .popup_header{font-size:1.5em;font-weight:600;margin-bottom:25px;text-transform:uppercase;letter-spacing:1px}
@@ -18,7 +18,7 @@ body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Dida
 .questions .yes{margin-top:10px;font-size:3.45em}
 .questions .row6{margin-top:10px;line-height:26px;font-size:.9em;width:85%;text-align:left;margin-left:10%}
 .gradient_border.activated{color:#da727e}
-.gradient_border{display:block;position:relative;width:294px;height:60px;margin:50px auto 0;padding:0 0 0 1px;background-image:linear-gradient(to right,#ffbc67,#da727e);border-radius:11px;border:0;outline:0;font-family:"Didact Gothic",sans-serif;font-size:1.4em;color:#fff;transition:background-image .3s}
+.gradient_border{display:block;position:relative;width:294px;height:60px;margin:25px auto 0;padding:0 0 0 1px;background-image:linear-gradient(to right,#ffbc67,#da727e);border-radius:11px;border:0;outline:0;font-family:"Didact Gothic",sans-serif;font-size:1.4em;color:#fff;transition:background-image .3s}
 .gradient_border .button_div{width:288px}
 .gradient_border.activated:hover{box-shadow:0 8px 20px -9px #455c7b}
 .gradient_border.activated:hover .button_div{background-image:linear-gradient(to right,#ffbc67,#da727e);color:#fff;box-sizing:border-box;border:0;transition:box-shadow .6s,background-image .5}
@@ -27,10 +27,12 @@ body{position:absolute;z-index:-100;width:100%;min-height:100%;font-family:"Dida
 .gradient_border.small .button_div{padding:10px;width:194px;font-size:.8em}
 .gradient_border.small .button_div i{margin:8px 5px 0 0;font-size:1em}
 .button_div{position:absolute;box-sizing:border-box;top:2px;left:2px;right:2px;bottom:2px;width:418px;height:54px;display:block;margin:auto;padding:16px;border:0;background-color:#fff;border-radius:9px;outline:0;line-height:20px}
-.sidebar{transform:translate(-999px);width:300px;min-height:100vh;background-color:rgba(255,255,255,.95);padding:5px;transition:transform .5s}
+.sidebar{transform:translate(-999px);width:280px;min-height:100vh;background-color:rgba(255,255,255,.95);padding:5px;transition:transform .5s}
 .modal h2,.sidebar h2{font-size:1.6em;color:#685c79;width:85%;margin:50px auto 25px}
-.modal #search.input_container label,.sidebar #search.input_container label{margin:0}
-.modal .input_container,.sidebar .input_container{position:relative;margin:25px auto 0;width:85%;z-index:1}
+.modal .text_input.input_container label,.sidebar .text_input.input_container label{margin:0}
+.modal .text_input.input_container.last,.sidebar .text_input.input_container.last{margin-bottom:50px}
+.modal .input_container.checkbox,.sidebar .input_container.checkbox{display:flex;align-items:center}
+.modal .input_container,.sidebar .input_container{position:relative;margin:10px auto 0;width:85%;z-index:1}
 .modal .input_container input[type=text],.sidebar .input_container input[type=text]{width:100%;background-color:transparent;outline:0;border:0;padding:5px 0;font-size:1.2em;color:#685c79}
 .modal .input_container i,.sidebar .input_container i{position:absolute;top:5px;right:0;color:#da727e;cursor:pointer}
 .modal .input_container .gradient_input,.sidebar .input_container .gradient_input{height:1px;width:100%;background-image:linear-gradient(#b9b9b9,#d2d2d2);margin-bottom:10px;transition:all .8s}

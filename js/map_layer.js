@@ -1,8 +1,13 @@
 $(document).ready(function() {
 
+  // Landing Div
+  var $landingContainer = $('.landing_container');
+
   // Sidebar
   var $sidebar = $('.sidebar');
   var $pinToolTrigger = $('#trigger_pin_tool');
+  var $textInputs = $(':text');
+  var $sidebarCheckboxes = $('aside .checked');
 
   // Map
   var $cursorArea = $('.mapboxgl-canvas-container.mapboxgl-interactive, .mapboxgl-ctrl-nav-compass');
@@ -74,6 +79,14 @@ $(document).ready(function() {
     }).done(function(response) {
       console.log(response);
       initializeMap(response);
+    });
+  });
+
+  // Hide landing div
+  $('#mapbox_trigger').on('click', function() {
+    $landingContainer.animate({opacity: 0}, function() {
+      $(this).css('display', 'none');
+      $sidebar.css('transform', 'translate(0)');
     });
   });
 
@@ -184,14 +197,10 @@ $(document).ready(function() {
         }
       });
     });
-
     // Add the layer to the map
     map.addLayer(coffeeShopsLayer);
-
     // Generate popups for each coffeeShop in the layer
     coffeeShopsLayer.source.data.features.forEach(function(cafe) {
-      console.log(cafe);
-
       // Generate HTML structure for rendering data for each coffeeShop
       var popupContent = '' +
         '<div class="popup">' +
@@ -332,19 +341,6 @@ $(document).ready(function() {
     });
   }
 
-  // function placeMarker(event) {
-  //   var coordinates = event.lngLat;
-  //   var geojson = {
-  //     "type": "Feature",
-  //     "geometry": {
-  //       "type": "Point",
-  //       "coordinates": [coordinates.lng, coordinates.lat]
-  //     },
-  //     "properties": { coffeeShop }
-  //   };
-  //   reinitializeMap(geojson);
-  // }
-
   function resetPinTrigger(event) {
     // Reopen the sidebar
     $sidebar.css('transform', 'translate(0)');
@@ -357,5 +353,32 @@ $(document).ready(function() {
     $pinToolTrigger.toggleClass('activated');
     $pinToolTrigger.on('click.pin', addPinToMap);
   }
+
+  // SORTING FUNCTIONALITY
+  $textInputs.each(function() {
+    $(this).on('focus', function() {
+      $(this).next().css('transform', 'scaleY(2)');
+      $(this).next().css('background-image', 'linear-gradient(to right, rgba(255, 188, 103, 1), rgba(218, 114, 126, 1))');
+    });
+    $(this).on('blur', function() {
+      $(this).next().css('transform', 'scaleY(1)');
+      $(this).next().css('background-image', 'linear-gradient(to right, rgba(185, 185, 185, 1), rgba(210, 210, 210, 1))');
+    });
+  });
+
+  $sidebarCheckboxes.each(function() {
+    $(this).data('checked', false);
+    $(this).on('click', function() {
+      if (!$(this).data().checked) {
+        $(this).data().checked = true;
+        $(this).parent().css('background-image', 'linear-gradient(to right, rgba(255, 188, 103, 1), rgba(218, 114, 126, 1))');
+        $(this).prepend('<i class="material-icons checkmark">check</i>')
+      } else {
+        $(this).data().checked = false;
+        $(this).parent().css('background-image', 'linear-gradient(to right, rgba(185, 185, 185, 1), rgba(185, 185, 185, 1))');
+        $(this).children().remove();
+      }
+    });
+  });
 
 });
