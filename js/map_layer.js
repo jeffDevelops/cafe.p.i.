@@ -82,7 +82,7 @@ $(document).ready(function() {
       $sidebar.css('transform', 'translate(-999px)');
       $sidebar.data('visible', false);
       $menuToggle.css({
-        'top': '10px',
+        'top': '5px',
         'left': '5px',
         'box-shadow': '0 8px 20px -9px #455C7B',
         'background-color': 'rgba(255, 255, 255, .85)'
