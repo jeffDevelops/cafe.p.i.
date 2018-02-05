@@ -13,7 +13,25 @@ function getAllCoffeeShops(req, res) {
 }
 
 function createNewCoffeeShop(req, res) {
-  console.log('CREATE NEW HIT!');
+  let newCoffeeShop = JSON.parse(req.body.data);
+  console.log(newCoffeeShop);
+  CoffeeShop.create({
+    name: newCoffeeShop.name,
+    address: newCoffeeShop.address,
+    coordinates: {type: 'Point', coordinates: newCoffeeShop.coordinates},
+    wifi: newCoffeeShop.wifi,
+    outlets: newCoffeeShop.outlets,
+    comfortableSeating: newCoffeeShop.comfortableSeating,
+    workEnvironment: newCoffeeShop.workEnvironment,
+    goodCoffee: newCoffeeShop.goodCoffee,
+    spaceToSitDown: newCoffeeShop.spaceToSitDown
+  }).then((createdCoffeeShop) => {
+      console.log('Created: ', createdCoffeeShop.name);
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.json('Got the new one! Thanks!');
+    }).catch((error) => {
+      console.log(error);
+    });
 }
 
 module.exports = {

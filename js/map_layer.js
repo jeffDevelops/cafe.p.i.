@@ -78,14 +78,15 @@ $(document).ready(function() {
         "icon-allow-overlap": true
       }
     };
-
+    
+    console.log(newCoffeeShops);
     // Push new coffee shops into the coffeeShops layer
     newCoffeeShops.forEach(function(cafe) {
       coffeeShopsLayer.source.data.features.push({
         "type": "feature",
         "geometry": {
           "type": "Point",
-          "coordinates": [cafe.coordinates.lng, cafe.coordinates.lat]
+          "coordinates": [cafe.coordinates[0], cafe.coordinates[1]]
         },
         "properties": {
           "name": cafe.name,
@@ -131,11 +132,9 @@ $(document).ready(function() {
         closeOnClick: false
       }).setHTML(popupContent)
         .setLngLat(cafe.geometry.coordinates);
-
-      console.log(cafe.properties.coordinates.lng);
         
       var newMarker = new mapboxgl.Marker(marker_img, {offset: [0,0]})
-        .setLngLat([cafe.properties.coordinates.lng, cafe.properties.coordinates.lat])
+        .setLngLat(cafe.geometry.coordinates)
         .setPopup(popup)
         .addTo(map);
         
@@ -159,6 +158,7 @@ $(document).ready(function() {
   $pinToolTrigger.on('click.pin', addPinToMap);
 
   function addPinToMap() {
+    console.log('Hello from addPinToMap');
     // Hide sidebar to allow interaction with the map
     $sidebar.css('transform', 'translate(-999px)');
     $pinToolTrigger.css({
@@ -177,8 +177,7 @@ $(document).ready(function() {
   }
 
   function renderCreateModal(event) {
-    console.log(event);
-    coordinates = event.lngLat;
+    coordinates = [event.lngLat.lng, event.lngLat.lat];
     console.log(coordinates);
     // Open the modal
     $modal.css('display', 'block');
@@ -217,14 +216,16 @@ $(document).ready(function() {
         $(this).off('click.checkboxes');
       });
 
-      console.log(newCoffeeShop);
+      console.log(JSON.stringify(newCoffeeShop));
 
       // Persist the coffeeshop in the database
       var url = API_ROOT + '/coffee_shops';
+
       $.ajax({
         method: 'POST',
         url: url,
-        data: newCoffeeShop
+        dataType: 'json',
+        data: {data: JSON.stringify(newCoffeeShop)}
       }).done(function(response) {
         console.log('hello from ajax');
         console.log(response);
